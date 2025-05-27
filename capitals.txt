@@ -1,0 +1,20 @@
+Tokyo
+37.1
+Delhi
+33.8
+Shanghai
+29.2
+São Paulo
+23.7
+Mexico City
+22.6
+Cairo
+22.2
+Dhaka
+22.1
+Beijing
+21.7
+Mumbai
+21.3
+Osaka
+19.0

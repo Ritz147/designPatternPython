@@ -1,4 +1,15 @@
-class Neuron:
+from abc import ABC
+from collections.abc import Iterable
+class Connectable(Iterable,ABC):
+    def connect_to(self,other):
+        if self ==other:
+            return
+        for s in self:
+            for o in other :
+                s.inputs.append(o)
+                o.outputs.append(s)
+     
+class Neuron(Connectable):
     def __init__(self,name):
         self.name=name
         self.inputs=[]
@@ -12,7 +23,7 @@ class Neuron:
     # def connect_to(self,other):
     #     self.outputs.append(other)
     #     other.inputs.append(self)
-class NeuralLayer(list):
+class NeuralLayer(list,Connectable):
     def __init__(self,name,count):
         super().__init__()
         self.name=name
@@ -22,20 +33,12 @@ class NeuralLayer(list):
         return f'{self.name} with {len(self)} neurons'
     def __iter__(self):
         return super().__iter__()
-def connect_to(self,other):
-    if self ==other:
-        return
-    for s in self:
-        for o in other :
-            s.inputs.append(o)
-            o.outputs.append(s)
+
 if __name__=='__main__':
     neuron1=Neuron('n1')
     neuron2=Neuron('n2')
     layer1=NeuralLayer('L1',3)
     layer2=NeuralLayer('L2',4)
-    Neuron.connect_to=connect_to
-    NeuralLayer.connect_to=connect_to
     neuron1.connect_to(neuron2)
     neuron1.connect_to(layer1)
     layer1.connect_to(neuron2)

@@ -11,7 +11,7 @@ class RelationshipBrowser():
     @abstractmethod
     def find_all_children(self,name):
         pass
-class Relationships(RelationshipBrowser):
+class Relationships(RelationshipBrowser):#low level module
     def __init__(self):
         self.relations=[]
     def add_parent_and_child(self,parent,child):
@@ -21,7 +21,7 @@ class Relationships(RelationshipBrowser):
         for r in self.relations:
             if r[0].name==name and r[1]==Relationship.PARENT:
                 yield r[2].name
-class Research:
+class Research:#high level module
     def __init__(self,browser):
         for p in browser.find_all_children('John'):
             print(f'John has a child called {p}')
